@@ -73,7 +73,8 @@
           dropdownModel: '=',
           dropdownItemLabel: '@',
           dropdownOnchange: '&',
-          dropdownDisabled: '='
+          dropdownDisabled: '=',
+          dropdownForm: '='
         },
 
         controller: ['$scope', '$element', function ($scope, $element) {
@@ -84,6 +85,7 @@
           this.select = function (selected) {
             if (!angular.equals(selected, $scope.dropdownModel)) {
                 $scope.dropdownModel = selected;
+                $scope.dropdownForm.$setDirty();
             }
             $scope.dropdownOnchange({
               selected: selected
